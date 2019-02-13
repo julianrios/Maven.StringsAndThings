@@ -35,6 +35,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
+
         return base.replace(remove, "");
     }
 
@@ -47,28 +48,22 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input) {
+        boolean equalCount = false;
+        int isCounter = 0;
+        int notCounter = 0;
 
+        for (int i = 0; i < input.length(); i++) {
+            if(input.charAt(i) == 's' && input.charAt(i-1)== 'i') {
+                isCounter++;
+            } else if (input.charAt(i) == 't' && input.charAt(i-1)== 'o' && input.charAt(i-2)== 'n') {
+                notCounter++;
+            }
+        }
 
-        //        ArrayList<Character> is = new ArrayList<Character>();
-//        ArrayList<Character> not = new ArrayList<Character>();
-//        char[] word = input.toCharArray();
-//        for (int letter = 0; letter < input.length(); letter++) {
-//            if (word[letter] == 'i' && word[letter + 1] == 's') {
-//                is.add(word[letter]);
-//                is.add(word[letter + 1]);
-//            } else if (word[letter] == 'o' && word[letter + 1] == 't') {
-//                not.add(word[letter - 1]);
-//                not.add(word[letter]);
-//                not.add(word[letter + 1]);
-//            }
-//
-//            for (Character l : is) {
-//                System.out.println(l);
-//            }
-//
-//        }
-
-        return false;
+        if(isCounter == notCounter){
+            equalCount = true;
+        }
+        return equalCount;
     }
 
     /**
@@ -80,7 +75,8 @@ public class StringsAndThings {
      */
     public Boolean gIsHappy(String input){
         Boolean isHappy = false;
-        for(int i =0 ; i< input.length()-1; i++) {
+
+        for(int i =0 ; i< input.length(); i++) {
 
             // checks the current letter and following letter are equal
             if(input.charAt(i) == 'g' && input.charAt(i+1) == 'g') {
@@ -106,9 +102,10 @@ public class StringsAndThings {
      */
     public Integer countTriple(String input){
         int tripleCounter = 0;
-
+        // stops at length minus one to avoid checking an index out of bounds
         for (int i = 0; i < input.length()-1; i++) {
             if(input.charAt(i) == input.charAt(i+1)) {
+
                 if (input.charAt(i+2) == input.charAt(i)) {
                     tripleCounter++;
                 }
