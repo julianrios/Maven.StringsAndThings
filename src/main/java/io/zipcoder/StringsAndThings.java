@@ -1,6 +1,5 @@
 package io.zipcoder;
 
-
 /**
  * @author tariq
  */
@@ -15,7 +14,15 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int counter = 0;
+        String[] words = input.split("\\s+");
+
+        for(String word : words) {
+            if(word.endsWith("y") || word.endsWith("z")) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     /**
@@ -28,7 +35,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove, "");
     }
 
     /**
@@ -39,8 +46,29 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+
+
+        //        ArrayList<Character> is = new ArrayList<Character>();
+//        ArrayList<Character> not = new ArrayList<Character>();
+//        char[] word = input.toCharArray();
+//        for (int letter = 0; letter < input.length(); letter++) {
+//            if (word[letter] == 'i' && word[letter + 1] == 's') {
+//                is.add(word[letter]);
+//                is.add(word[letter + 1]);
+//            } else if (word[letter] == 'o' && word[letter + 1] == 't') {
+//                not.add(word[letter - 1]);
+//                not.add(word[letter]);
+//                not.add(word[letter + 1]);
+//            }
+//
+//            for (Character l : is) {
+//                System.out.println(l);
+//            }
+//
+//        }
+
+        return false;
     }
 
     /**
@@ -51,7 +79,21 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        Boolean isHappy = false;
+        for(int i =0 ; i< input.length()-1; i++) {
+
+            // checks the current letter and following letter are equal
+            if(input.charAt(i) == 'g' && input.charAt(i+1) == 'g') {
+                isHappy = true;
+                // checks if the current letter and the previous letter are pasequal
+            } else if (input.charAt(i) == 'g' && input.charAt(i-1) == 'g') {
+                isHappy = true;
+                // checks the current and the following are not equal
+            } else if (input.charAt(i) == 'g' && input.charAt(i+1) != 'g' ) {
+                isHappy = false;
+            }
+        }
+        return isHappy;
     }
 
 
@@ -63,6 +105,15 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int tripleCounter = 0;
+
+        for (int i = 0; i < input.length()-1; i++) {
+            if(input.charAt(i) == input.charAt(i+1)) {
+                if (input.charAt(i+2) == input.charAt(i)) {
+                    tripleCounter++;
+                }
+            }
+        }
+        return tripleCounter;
     }
 }
